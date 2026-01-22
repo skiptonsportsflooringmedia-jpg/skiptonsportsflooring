@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skipton Sports Flooring</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #549edf;
+    --secondary-color: #ff0000;
+    --dark-color: #0f2234;
+    --bg-color: #163049;
+    --transition: all .3s ease;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--bg-color);
+    color: #333;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* ================= HEADER ================= */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--dark-color);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .4);
+    padding: 10px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 70px;
+    width: auto;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-main {
+    font-size: 28px;
+    font-weight: 700;
+    color: #549edf; /* Skipton specific color as requested */
+    letter-spacing: 1px;
+}
+
+.logo-sub {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-top: 3px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: var(--transition);
+    padding: 5px 0;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-btn {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 5px;
+    transition: var(--transition);
+}
+
+.mobile-menu-btn:hover {
+    color: var(--secondary-color);
+}
+
+/* ================= SLIDER ================= */
+.slider-container {
+    height: 100vh;
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .5);
+}
+
+/* ================= HERO ================= */
+.hero {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    z-index: 10;
+    padding: 0 20px;
+}
+
+.hero-content {
+    max-width: 800px;
+    /*background: rgba(15, 34, 52, 0.8);*/
+    padding: 40px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.hero h2 {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero h3 {
+    font-weight: 400;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 30px;
+    background: var(--secondary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn:hover {
+    background: #cc0000;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ================= SECTIONS ================= */
+.page-section {
+    padding: 100px 0;
+}
+
+.section-title {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    color: var(--primary-color);
+    font-size: 36px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--secondary-color);
+}
+
+/* ================= SERVICES ================= */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.service-img {
+    height: 200px;
+    overflow: hidden;
+}
+
+.service-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .service-img img {
+    transform: scale(1.05);
+}
+
+.service-info {
+    padding: 20px;
+}
+
+.service-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.service-info p {
+    color: #555;
+    font-size: 16px;
+}
+
+/* ================= YOUTUBE ================= */
+.youtube-section {
+    background: #fff;
+}
+
+.youtube-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.youtube-wrapper {
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.youtube-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.youtube-channel {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* ================= CONTACT ================= */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.contact-info,
+.contact-form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
+}
+
+.contact-info h3,
+.contact-form h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.contact-detail {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.contact-detail i {
+    font-size: 20px;
+    color: var(--secondary-color);
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.contact-detail p {
+    color: #555;
+    font-size: 16px;
+}
+
+.social-links {
+    margin-top: 30px;
+}
+
+.social-links a {
+    display: inline-block;
+    font-size: 22px;
+    margin-right: 20px;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    color: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    transition: var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(84, 158, 223, 0.2);
+}
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.contact-form button.btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+    .hero h2 {
+        font-size: 38px;
+    }
+    
+    .hero h3 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 0;
+    }
+    
+    .logo-img {
+        height: 60px;
+    }
+    
+    .logo-main {
+        font-size: 24px;
+    }
+    
+    .logo-sub {
+        font-size: 14px;
+    }
+    
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--dark-color);
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    nav.active {
+        display: block;
+    }
+    
+    nav ul {
+        flex-direction: column;
+    }
+    
+    nav ul li {
+        margin: 0 0 15px 0;
+    }
+    
+    nav ul li:last-child {
+        margin-bottom: 0;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 10px 0;
+        font-size: 18px;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .slider-container {
+        height: 80vh;
+        margin-top: 80px;
+    }
+    
+    .hero h2 {
+        font-size: 32px;
+    }
+    
+    .hero h3 {
+        font-size: 18px;
+    }
+    
+    .hero-content {
+        padding: 30px 20px;
+    }
+    
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .page-section {
+        padding: 70px 0;
+    }
+    
+    .section-title h2 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo-img {
+        height: 50px;
+    }
+    
+    .logo-main {
+        font-size: 20px;
+    }
+    
+    .logo-sub {
+        font-size: 12px;
+    }
+    
+    .slider-container {
+        height: 70vh;
+    }
+    
+    .hero h2 {
+        font-size: 28px;
+    }
+    
+    .hero h3 {
+        font-size: 16px;
+    }
+    
+    .btn {
+        padding: 10px 25px;
+        font-size: 16px;
+    }
+    
+    .services {
+        grid-template-columns: 1fr;
+    }
+    
+    .youtube-wrapper {
+        aspect-ratio: 16/10;
+    }
+}
+/* ================= CLIENT LOGO SLIDER ================= */
+.logo-slider {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    background: white;
+}
+
+.logo-track {
+    display: flex;
+    width: calc(250px * 20); /* 250px per image * 20 images total */
+    animation: scroll 40s linear infinite;
+}
+
+/* Pause animation on hover so people can see the logos */
+.logo-track:hover {
+    animation-play-state: paused;
+}
+
+.slide-logo {
+    width: 250px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Locate this in your <style> block */
+.slide-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    /* DELETE THE TWO LINES BELOW */
+    filter: grayscale(0%); /* This makes it black and white */
+    opacity: 100;            /* This makes it slightly faded */
+    transition: var(--transition);
+}
+
+/* ALSO DELETE THIS IF YOU WANT NO HOVER EFFECT */
+.slide-logo img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 10)); } /* Moves by exactly 10 logos */
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .logo-track {
+        width: calc(150px * 20);
+        animation: scroll 25s linear infinite;
+    }
+    .slide-logo { width: 150px; height: 100px; }
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-150px * 10)); }
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container header-container">
+        <a href="#home" class="logo">
+            <img src="/ssflogo.png" class="logo-img" alt="Skipton Sports Flooring Logo">
+            <div class="logo-text">
+                <span class="logo-main">Skipton</span>
+                <span class="logo-sub">Sports Flooring</span>
+            </div>
+        </a>
+
+        <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+
+        <nav id="nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#youtube">YouTube</a></li>
+                <li><a href="#clients">Clients</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- HOME -->
+<section id="home">
+    <div class="slider-container">
+        <div class="slide active" style="background-image: url('/img4.jpg')"></div>
+        <div class="slide" style="background-image: url('/img5.jpg')"></div>
+        <div class="slide" style="background-image: url('/img3.jpg')"></div>
+        <div class="slide" style="background-image: url('/img8.jpg')"></div>
+
+
+        <div class="hero">
+            <div class="hero-content">
+                <h2>Premium Athletic Flooring</h2>
+                <h3>Strong foundations for champions</h3>
+                <a href="#contact" class="btn">Get a Quote</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="container page-section">
+    <div class="section-title">
+        <h2>Our Services</h2>
+    </div>
+
+    <div class="services">
+        <div class="service-card">
+            <div class="service-img"><img src="/img3.jpg" alt="Basketball Court"></div>
+            <div class="service-info">
+                <h3>Basketball & Indoor Courts</h3>
+                <p>Professional indoor court flooring with optimal traction and Wooden & shock absorption for peak performance and safety.</p>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-img"><img src="/img6.jpg" alt="Multi-Purpose Flooring"></div>
+            <div class="service-info">
+                <h3>Multi-Purpose Flooring</h3>
+                <p>Durable, versatile flooring solutions for gyms, halls, and recreational facilities.</p>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-img"><img src="/img5.jpg" alt="Outdoor Turf"></div>
+            <div class="service-info">
+                <h3>Outdoor Turf & Tracks</h3>
+                <p>Weather-resistant, low-maintenance sports turf ideal for various outdoor athletic activities.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- YOUTUBE -->
+<section id="youtube" class="youtube-section page-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our YouTube Channel</h2>
+        </div>
+
+        
+        <div class="youtube-channel">
+            <a href="https://youtube.com/@skiptonsportsflooringssf?si=fXFpSsel-U7Gnfb3" class="btn" target="_blank">Visit Our Channel</a>
+        </div>
+    </div>
+</section>
+<section id="clients" class="page-section" style="background: #fff; padding: 60px 0; overflow: hidden;">
+    <div class="section-title">
+        <h2>Our Esteemed Clients</h2>
+    </div>
+    
+    <div class="logo-slider">
+        <div class="logo-track">
+            <div class="slide-logo"><img src="c1.png" alt="Client 1"></div>
+            <div class="slide-logo"><img src="c2.png" alt="Client 2"></div>
+            <div class="slide-logo"><img src="c3.png" alt="Client 3"></div>
+            <div class="slide-logo"><img src="c4.png" alt="Client 4"></div>
+            <div class="slide-logo"><img src="c5.png" alt="Client 5"></div>
+            <div class="slide-logo"><img src="c6.png" alt="Client 6"></div>
+            <div class="slide-logo"><img src="c7.png" alt="Client 7"></div>
+            <div class="slide-logo"><img src="c8.png" alt="Client 8"></div>
+            <div class="slide-logo"><img src="c9.png" alt="Client 9"></div>
+            <div class="slide-logo"><img src="c10.png" alt="Client 10"></div>
+
+            <div class="slide-logo"><img src="c1.png" alt="Client 1"></div>
+            <div class="slide-logo"><img src="c2.png" alt="Client 2"></div>
+            <div class="slide-logo"><img src="c3.png" alt="Client 3"></div>
+            <div class="slide-logo"><img src="c4.png" alt="Client 4"></div>
+            <div class="slide-logo"><img src="c5.png" alt="Client 5"></div>
+            <div class="slide-logo"><img src="c6.png" alt="Client 6"></div>
+            <div class="slide-logo"><img src="c7.png" alt="Client 7"></div>
+            <div class="slide-logo"><img src="c8.png" alt="Client 8"></div>
+            <div class="slide-logo"><img src="c9.png" alt="Client 9"></div>
+            <div class="slide-logo"><img src="c10.png" alt="Client 10"></div>
+        </div>
+    </div>
+</section>
+<!-- CONTACT -->
+<section id="contact" class="container page-section">
+    <div class="section-title">
+        <h2>Contact Us</h2>
+    </div>
+
+    <div class="contact-container">
+        <div class="contact-info">
+            <h3>Get In Touch</h3>
+
+            <div class="contact-detail">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Jayam Garden, Perundurai<br>Erode, Tamil Nadu 638052</p>
+            </div>
+
+            <div class="contact-detail">
+                <i class="fas fa-phone"></i>
+                <p>+91 98430 25326</p>
+            </div>
+
+            <div class="contact-detail">
+                <i class="fas fa-envelope"></i>
+                <p>boopathisportsvb@gmail.com</p>
+            </div>
+
+            <div class="social-links">
+                <a href="https://wa.me/6383151203" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/skiptonsports" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://t.me/skiptonsportsflooring" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="https://youtube.com/@skiptonsportsflooringssf?si=fXFpSsel-U7Gnfb3" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h3>Send Message</h3>
+            <form id="contactForm">
+    <input type="text" id="wa_name" placeholder="Your Name" required>
+    <input type="email" id="wa_email" placeholder="Your Email" required>
+    <input type="tel" id="wa_phone" placeholder="Phone Number">
+    <textarea id="wa_message" placeholder="Your Message" required></textarea>
+    <button class="btn" type="submit">Send via WhatsApp</button>
+</form>
+        </div>
+    </div>
+</section>
+
+<script>
+// Slider functionality
+const slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+
+function nextSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+}
+
+// Initialize the slider
+setInterval(nextSlide, 5000);
+
+// Mobile menu toggle
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const nav = document.getElementById('nav');
+
+mobileMenuBtn.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    // Change icon based on menu state
+    const icon = mobileMenuBtn.querySelector('i');
+    if (nav.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+    } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    }
+});
+
+// Close mobile menu when clicking a link
+const navLinks = document.querySelectorAll('nav a');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        const icon = mobileMenuBtn.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    });
+});
+
+// Form submission
+// Form submission to WhatsApp
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // 1. Get the values from the form
+    const name = document.getElementById('wa_name').value;
+    const email = document.getElementById('wa_email').value;
+    const phone = document.getElementById('wa_phone').value;
+    const message = document.getElementById('wa_message').value;
+
+    // 2. Your WhatsApp number (with country code, no + or spaces)
+    const whatsappNumber = "9843025326"; 
+
+    // 3. Construct the message format
+    // %0A is a line break in URLs
+    const encodedMessage = `*New Inquiry from Skipton Website*%0A%0A` + 
+                           `*Name:* ${name}%0A` + 
+                           `*Email:* ${email}%0A` + 
+                           `*Phone:* ${phone}%0A` + 
+                           `*Message:* ${message}`;
+
+    // 4. Create the WhatsApp URL
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+    // 5. Open WhatsApp in a new tab
+    window.open(whatsappURL, '_blank').focus();
+
+    // Optional: Reset form after sending
+    contactForm.reset();
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+</script>
+
+</body>
+</html>
